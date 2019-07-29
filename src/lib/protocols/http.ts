@@ -2,8 +2,7 @@ import { default as fastify } from "fastify";
 import { default as http } from "http";
 import { AddressInfo } from "net";
 import { BaseProtocol } from ".";
-import { IMutableMessage } from "../models/message";
-import { IMutablePeer, PeerId } from "../models/peer";
+import { PeerId } from "../models/peer";
 
 type Request = fastify.FastifyRequest<http.IncomingMessage>;
 type Reply = fastify.FastifyReply<http.ServerResponse>;

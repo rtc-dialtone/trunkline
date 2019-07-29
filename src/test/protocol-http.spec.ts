@@ -19,7 +19,7 @@ describe("protocol.http", () => {
     logger: pino(),
     // per fastify docs, a port of zero will self-assign
     port: 0,
-    // the memory database adapater is mocked, so this is a mock
+    // the memory database adapter is mocked, so this is a mock
     views: registry,
   });
 
@@ -227,7 +227,7 @@ describe("protocol.http", () => {
           },
         ];
         const expectedSerializedPeers = expectedPeers.map((peer) => ({...peer,
-          lastSeenAt: peer.lastSeenAt.toISOString()
+          lastSeenAt: peer.lastSeenAt.toISOString(),
         }));
 
         peerRegistry.findByFeature.mockResolvedValueOnce(expectedPeers);
@@ -406,7 +406,7 @@ describe("protocol.http", () => {
         expect(res.status).toBe(404);
         expect(msgRegistry.remove).toHaveBeenCalledTimes(1);
         expect(msgRegistry.remove).toHaveBeenCalledWith(msgId);
-      })
+      });
     });
   });
 });
