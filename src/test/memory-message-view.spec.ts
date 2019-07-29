@@ -59,10 +59,10 @@ describe("views.memory.message", () => {
       expect(memoryStore.spliceInPlace).toHaveBeenCalledWith(expectedIndex, 1);
     });
 
-    it("should not remove not-found messages", () => {
+    it("should not remove not-found messages", async () => {
       memoryStore.findIndex.mockReturnValueOnce(-1);
 
-      expect(messageView.remove("non-existent")).rejects.toBeInstanceOf(Error);
+      await expect(messageView.remove("non-existent")).rejects.toBeInstanceOf(Error);
     });
   });
 
@@ -86,10 +86,10 @@ describe("views.memory.message", () => {
       expect(memoryStore.findIndex).toHaveBeenCalledTimes(1);
     });
 
-    it("should not find not-found messages", () => {
+    it("should not find not-found messages", async () => {
       memoryStore.findIndex.mockReturnValueOnce(-1);
 
-      expect(messageView.findById("non-existent")).rejects.toBeInstanceOf(Error);
+      await expect(messageView.findById("non-existent")).rejects.toBeInstanceOf(Error);
     });
   });
 
@@ -110,10 +110,10 @@ describe("views.memory.message", () => {
       expect(memoryStore.filter).toHaveBeenCalledTimes(1);
     });
 
-    it("should not find not-found messages", () => {
+    it("should not find not-found messages", async () => {
       memoryStore.filter.mockReturnValueOnce([]);
 
-      expect(messageView.findByPeer("non-existent")).rejects.toBeInstanceOf(Error);
+      await expect(messageView.findByPeer("non-existent")).rejects.toBeInstanceOf(Error);
     });
   });
 });

@@ -47,10 +47,10 @@ describe("views.memory.message", () => {
   });
 
   describe("update", () => {
-    it("should fail to find not-present peers", () => {
+    it("should fail to find not-present peers", async () => {
       memoryStore.findIndex.mockReturnValueOnce(-1);
 
-      expect(peerView.update("non-existent-peer", { connectionCount: 1 })).rejects.toBeInstanceOf(Error);
+      await expect(peerView.update("non-existent-peer", { connectionCount: 1 })).rejects.toBeInstanceOf(Error);
     });
 
     // TODO(begreener): complete remaining tests
