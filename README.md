@@ -5,6 +5,7 @@
 Batteries included multi-protocol WebRtc communications backend. 📶🔋
 
 ![alpha badge](https://img.shields.io/badge/status-alpha-orange.svg)
+[![Build Status](https://dev.azure.com/bengreenier/rtc-dialtone/_apis/build/status/rtc-dialtone.trunkline?branchName=master)](https://dev.azure.com/bengreenier/rtc-dialtone/_build/latest?definitionId=13&branchName=master)
 
 Scaling WebRTC can be tricky - there are many moving parts and services required to establish a basic call. Even in the best conditions, these components can be tough to understand and hard to manage. This project aims to help reduce the burden of maintaining an application-specific service that facilitates WebRTC session establishment and ongoing message handoff. It has three goals:
 

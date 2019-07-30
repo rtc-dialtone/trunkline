@@ -12,6 +12,12 @@
     "test": "jest --coverage"
   },
   "jest": {
+    "collectCoverageFrom": [
+      "**/src/**/*.ts"
+    ],
+    "coverageReporters": [
+      "cobertura"
+    ],
     "preset": "ts-jest"
   },
   "author": "Ben Greenier",
