@@ -4,6 +4,7 @@
   "description": "Batteries included multi-protocol WebRtc communications backend. 📶🔋",
   "main": "dist\\lib\\index.js",
   "scripts": {
+    "dist": "npm run build && pkg --out-path bin dist\\dialtone.js",
     "build": "tsc",
     "lint": "tslint -p .",
     "direct-start": "node dist\\dialtone.js",
@@ -32,6 +33,7 @@
     "dotenv": "^8.0.0",
     "fastify": "^2.4.1",
     "pino": "^5.12.3",
+    "pkg": "^4.4.0",
     "uuid": "^3.3.2",
     "yargs": "^13.2.4"
   },
