@@ -26,6 +26,10 @@ steps:
   inputs:
     command: 'custom'
     customCommand: 'run test'
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: 'coverage/lcov.info'
 - task: Npm@1
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   inputs:
