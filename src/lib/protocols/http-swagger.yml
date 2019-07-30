@@ -1,0 +1,226 @@
+swagger: "2.0"
+info:
+  description: "Batteries included multi-protocol WebRtc communications backend. 📶🔋"
+  version: "1.0.0-alpha"
+  title: "trunkline"
+  termsOfService: "https://github.com/rtc-dialtone/trunkline/blob/master/LICENSE"
+  license:
+    name: "GPL-3.0"
+    url: "https://github.com/rtc-dialtone/trunkline/blob/master/LICENSE"
+basePath: "/"
+schemes:
+- "https"
+- "http"
+paths:
+  /peers:
+    post:
+      summary: "Add a new peer"
+      operationId: "createPeer"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Peer data"
+        required: true
+        schema:
+          $ref: "#/definitions/IMutablePeer"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/IPeer"
+  /peers/{peerid}:
+    parameters:
+      - in: "path"
+        name: "peerid"
+        description: "Id of the peer"
+        required: true
+        type: "string"
+    get:
+      summary: "Get a peer"
+      operationId: "getPeer"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/IPeer"
+    put:
+      summary: "Update a peer"
+      operationId: "updatePeer"
+      produces:
+      - "application/json"
+      consumes:
+      - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Peer data"
+          required: true
+          schema:
+            $ref: "#/definitions/IMutablePeer"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/IPeer"
+    delete:
+      summary: "Delete a peer"
+      operationId: "removePeer"
+      responses:
+        204:
+          description: "Ok"
+  /features/{featureid}/peers:
+    parameters:
+      - in: "path"
+        name: "featureid"
+        description: "Id of the feature"
+        required: true
+        type: "string"
+    get:
+      summary: "Get all peers with a given feature"
+      operationId: "getPeersWithFeature"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/IPeer"
+  /peers/{peerid}/messages:
+    parameters:
+      - in: "path"
+        name: "peerid"
+        description: "Id of the peer"
+        required: true
+        type: "string"
+    get:
+      summary: "Get all peer messages"
+      operationId: "getPeerMessages"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/IMessage"
+    post:
+      summary: "Create a peer message"
+      operationId: "createPeerMessage"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Message data"
+          required: true
+          schema:
+            $ref: "#/definitions/IMutableMessage"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/IMessage"
+  /peers/{peerid}/messages/{messageid}:
+    parameters:
+      - in: "path"
+        name: "peerid"
+        description: "Id of the peer"
+        required: true
+        type: "string"
+      - in: "path"
+        name: "messageid"
+        description: "Id of the message"
+        required: true
+        type: "string"
+    get:
+      summary: "Get a peer message"
+      operationId: "getPeerMessage"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/IMessage"
+    delete:
+      summary: "Remove a peer message"
+      operationId: "removePeerMessage"
+      produces:
+      - "application/json"
+      responses:
+        204:
+          description: "Ok"
+definitions:
+  IMutableMessage:
+    type: "object"
+    required:
+    - "data"
+    - "mimeType"
+    properties:
+      data:
+        type: "string"
+      mimeType:
+        type: "string"
+  IMessage:
+    allOf:
+      - $ref: "#/definitions/IMutableMessage"
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      createdAt:
+        type: "string"
+        format: "date-time"
+      createdBy:
+        type: "string"
+        description: "Peer id"
+        format: "uuid"
+      sentTo:
+        type: "string"
+        description: "Peer id"
+        format: "uuid"
+  IMutablePeer:
+    type: "object"
+    required:
+    - "features"
+    - "connectionCount"
+    - "connectionMax"
+    properties:
+      features:
+        type: "array"
+        items:
+          type: "string"
+      connectionCount:
+        type: "number"
+      connectionMax:
+        type: "number"
+  IPeer:
+    allOf:
+      - $ref: "#/definitions/IMutablePeer"
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      lastSeenAt:
+        type: "string"
+        format: "date-time"
+externalDocs:
+  description: "Find out more about trunkline"
+  url: "https://github.com/rtc-dialtone/trunkline/tree/master"

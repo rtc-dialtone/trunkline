@@ -193,7 +193,7 @@ describe("protocol.http", () => {
         peerRegistry.remove.mockResolvedValueOnce();
 
         const res = await request.delete(`http://localhost:${http.portBound}/peers/${expectedId}`);
-        expect(res.status).toBe(200);
+        expect(res.status).toBe(204);
         expect(peerRegistry.remove).toBeCalledTimes(1);
         expect(peerRegistry.remove).toBeCalledWith(expectedId);
       });
@@ -391,7 +391,7 @@ describe("protocol.http", () => {
         msgRegistry.remove.mockResolvedValueOnce();
 
         const res = await request.delete(`http://localhost:${http.portBound}/peers/2/messages/${msgId}`);
-        expect(res.status).toBe(200);
+        expect(res.status).toBe(204);
         expect(res.body).toEqual({});
         expect(msgRegistry.remove).toHaveBeenCalledTimes(1);
         expect(msgRegistry.remove).toHaveBeenCalledWith(msgId);

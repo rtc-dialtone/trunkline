@@ -83,7 +83,7 @@ export class HttpProtocol extends BaseProtocol {
   private async removePeer(req: Request, res: Reply) {
     try {
       await this.views.peer.remove(req.params.peerid);
-      res.status(200);
+      res.status(204);
       res.send();
     } catch (e) {
       this.logger.debug(`Failed to find peer: ${e}`);
@@ -144,7 +144,7 @@ export class HttpProtocol extends BaseProtocol {
   private async removePeerMessage(req: Request, res: Reply) {
     try {
       await this.views.message.remove(req.params.messageid);
-      res.status(200);
+      res.status(204);
       res.send();
     } catch (e) {
       this.logger.debug(`Failed to find message: ${e}`);
