@@ -2,12 +2,12 @@
   "name": "trunkline",
   "version": "1.0.0-alpha",
   "description": "Batteries included multi-protocol WebRtc communications backend. 📶🔋",
-  "main": "dist\\lib\\index.js",
+  "main": "dist/lib/index.js",
   "scripts": {
-    "dist": "npm run build && pkg --out-path bin dist\\dialtone.js",
+    "dist": "npm run build && pkg --out-path bin dist/dialtone.js",
     "build": "tsc",
     "lint": "tslint -p .",
-    "direct-start": "node dist\\dialtone.js",
+    "direct-start": "node dist/dialtone.js",
     "start": "npm run build && npm run lint && npm run direct-start",
     "test": "jest --coverage"
   },
