@@ -12,27 +12,34 @@ pool:
 
 steps:
 - task: Npm@1
+  displayName: 'npm install'
   inputs:
     command: 'install'
 - task: Npm@1
+  displayName: 'npm run lint'
   inputs:
     command: 'custom'
     customCommand: 'run lint'
 - task: Npm@1
+  displayName: 'npm run build'
   inputs:
     command: 'custom'
     customCommand: 'run build'
 - task: Npm@1
+  displayName: 'npm run test'
   inputs:
     command: 'custom'
     customCommand: 'run test'
 - task: PublishCodeCoverageResults@1
+  displayName: 'capture code coverage'
   inputs:
     codeCoverageTool: 'Cobertura'
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
     reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
 - task: Npm@1
+  displayName: 'npm run dist (master only)'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   inputs:
     command: 'custom'
     customCommand: 'run dist'
+
