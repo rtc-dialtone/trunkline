@@ -1,10 +1,6 @@
-# Starter pipeline
-
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
+- master
+pr:
 - master
 
 pool:
@@ -49,8 +45,9 @@ steps:
   inputs:
     gitHubConnection: 'github - bengreenier'
     repositoryName: 'rtc-dialtone/trunkline'
+    isDraft: true
     action: 'create'
-    target: 'v$(Build.SourceVersion)'
+    target: '$(Build.SourceVersion)'
     tagSource: 'auto'
-    title: 'v$(Build.SourceVersion)'
+    title: '$(Build.SourceVersion)'
     assets: '$(System.DefaultWorkingDirectory)/bin/**'
