@@ -15,7 +15,8 @@ Scaling WebRTC can be tricky - there are many moving parts and services required
 
 ## Quickstart
 
-Coming soon. 😅
++ Download the [latest binary release](https://github.com/rtc-dialtone/trunkline/releases/latest) for your os.
++ Run it 🚀
 
 ## Configuration
 
