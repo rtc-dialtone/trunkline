@@ -38,7 +38,7 @@ Configures the listening wire protocols.
 
 ### Verbosity
 
-> `CLI flag: `--verbosity` or `-V`
+> CLI flag: `--verbosity` or `-V`
 
 Configures the logging verbosity.
 
