@@ -1,8 +1,20 @@
 # trunkline
 
+![project logo](./.github/logo.png)
+
 Batteries included multi-protocol WebRtc communications backend. 📶🔋
 
 ![alpha badge](https://img.shields.io/badge/status-alpha-orange.svg)
+
+Scaling WebRTC can be tricky - there are many moving parts and services required to establish a basic call. Even in the best conditions, these components can be tough to understand and hard to manage. This project aims to help reduce the burden of maintaining an application-specific service that facilitates WebRTC session establishment and ongoing message handoff. It has three goals:
+
++ Be easy to run, both locally and in the cloud
++ Be easily understood and monitored at runtime
++ Support multiple configurations out of the box
+
+## Quickstart
+
+Coming soon. 😅
 
 ## Configuration
 
