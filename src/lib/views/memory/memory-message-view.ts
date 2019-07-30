@@ -28,7 +28,7 @@ export class MemoryMessageView implements IMessageView {
 
     const index = this.store.findIndex((element) => fullMatch ? element === msg : element.id === msg);
     if (index !== -1) {
-      this.store.spliceInPlace(index, 1);
+      this.store.splice(index, 1);
       return Promise.resolve();
     } else {
       return Promise.reject(new Error("No such message"));

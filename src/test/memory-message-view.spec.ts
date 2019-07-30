@@ -55,8 +55,8 @@ describe("views.memory.message", () => {
       memoryStore.findIndex.mockReturnValueOnce(expectedIndex);
 
       await messageView.remove(expectedId);
-      expect(memoryStore.spliceInPlace).toHaveBeenCalledTimes(1);
-      expect(memoryStore.spliceInPlace).toHaveBeenCalledWith(expectedIndex, 1);
+      expect(memoryStore.splice).toHaveBeenCalledTimes(1);
+      expect(memoryStore.splice).toHaveBeenCalledWith(expectedIndex, 1);
     });
 
     it("should not remove not-found messages", async () => {

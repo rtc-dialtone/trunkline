@@ -32,8 +32,8 @@ export class MemoryPeerView implements IPeerView {
     peer.connectionCount = data.connectionCount ? data.connectionCount : peer.connectionCount;
     peer.features = (data.features ? data.features : peer.features)
       .concat(peer.features)
-      .filter((value, i, self) => {
-        return self.indexOf(value) === i;
+      .filter((value, _, self) => {
+        return self.indexOf(value) > -1;
       });
     peer.lastSeenAt = new Date();
 
@@ -47,7 +47,7 @@ export class MemoryPeerView implements IPeerView {
 
     const index = this.store.findIndex((element) => fullMatch ? element === peer : element.id === peer);
     if (index !== -1) {
-      this.store.spliceInPlace(index, 1);
+      this.store.splice(index, 1);
       return Promise.resolve();
     } else {
       return Promise.reject(new Error("No such peer"));
@@ -65,10 +65,6 @@ export class MemoryPeerView implements IPeerView {
 
   public findByFeature(feature: string): Promise<IPeer[]> {
     const matches = this.store.filter((element) => element.features.includes(feature));
-    if (matches.length > 0) {
-      return Promise.resolve(matches);
-    } else {
-      return Promise.reject(new Error("No such peer(s)"));
-    }
+    return Promise.resolve(matches);
   }
 }

@@ -7,7 +7,7 @@ export interface IMemoryStore<T> {
   push(...items: T[]): number;
   findIndex(predicate: (value: T, index: number, obj: T[]) => boolean, thisArg?: any): number;
   filter(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg?: any): T[];
-  spliceInPlace(start: number, deleteCount?: number | undefined): void;
+  splice(start: number, deleteCount?: number | undefined): void;
 }
 
 /**
@@ -15,7 +15,7 @@ export interface IMemoryStore<T> {
  * Note: Why? Mock-ability of course.
  */
 export class MemoryStore<T> implements IMemoryStore<T> {
-  private backing: T[] = [];
+  protected backing: T[] = [];
 
   public getAt(index: number): T {
     return this.backing[index];
@@ -37,7 +37,7 @@ export class MemoryStore<T> implements IMemoryStore<T> {
     return this.backing.filter(callbackfn, thisArg);
   }
 
-  public spliceInPlace(start: number, deleteCount?: number | undefined): void {
-    this.backing = this.backing.splice(start, deleteCount);
+  public splice(start: number, deleteCount?: number | undefined): void {
+    this.backing.splice(start, deleteCount);
   }
 }
