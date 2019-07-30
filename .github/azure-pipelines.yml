@@ -52,3 +52,4 @@ steps:
     target: 'v$(Build.SourceVersion)'
     tagSource: 'auto'
     title: 'v$(Build.SourceVersion)'
+    assets: '$(System.DefaultWorkingDirectory)/bin/**'
