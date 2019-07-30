@@ -10,5 +10,20 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'run lint'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'run build'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'run test'
+- task: Npm@1
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    command: 'custom'
+    customCommand: 'run dist'
