@@ -16,6 +16,7 @@
   "author": "Ben Greenier",
   "license": "GPL-3.0",
   "devDependencies": {
+    "@types/dotenv": "^6.1.1",
     "@types/jest": "^24.0.13",
     "@types/pino": "^5.8.7",
     "@types/superagent": "^4.1.1",
@@ -28,6 +29,7 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
+    "dotenv": "^8.0.0",
     "fastify": "^2.4.1",
     "pino": "^5.12.3",
     "uuid": "^3.3.2",

@@ -1,6 +1,7 @@
 # Custom overrides
 .ava_output/
 .coverage_output/
+dist/
 # End of Custom overrides
 
 # Created by https://www.gitignore.io/api/node

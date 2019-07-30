@@ -13,8 +13,6 @@ export interface IBootstrapConfig {
 }
 
 export const bootstrap = async (opts: IBootstrapConfig) => {
-  opts.logger.info("strapped 😎");
-
   const views = allocateRegistry(opts.database);
   await opts.protocols.map((protocol) => {
     switch (protocol) {
