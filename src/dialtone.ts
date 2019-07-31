@@ -14,6 +14,10 @@ const argv = yargs
   .env("TRUNKLINE")
   .describe({
     database: `backing database type`,
+    dbhost: `database hostname`,
+    dbpass: `database password`,
+    dbtable: `database table name`,
+    dbuser: `database username`,
     port: `port to bind to`,
     protocols: `supported protocols`,
     verbosity: `logging level`,

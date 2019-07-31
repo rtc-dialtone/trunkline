@@ -33,6 +33,30 @@ Configures the backing database type.
 + Default: `memory`
 + Options: `memory`, `sql`
 
+#### dbhost
+
+> CLI flag: `--dbhost`
+
+The sql database hostname.
+
+#### dbtable
+
+> CLI flag: `--dbtable`
+
+The sql database table name.
+
+#### dbuser
+
+> CLI flag: `--dbuser`
+
+The sql database username.
+
+#### dbpass
+
+> CLI flag: `--dbpass`
+
+The sql database password.
+
 ### Port
 
 > CLI flag: `--port` or `-P`
