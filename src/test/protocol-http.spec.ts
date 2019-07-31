@@ -2,6 +2,7 @@ import { default as pino } from "pino";
 import { default as request } from "superagent";
 import { IMessage, IMutableMessage } from "../lib/models/message";
 import { IMutablePeer, IPeer } from "../lib/models/peer";
+import { SupportedProtocol } from "../lib/protocols";
 import { HttpProtocol } from "../lib/protocols/http";
 import { allocateRegistry, DatabaseType } from "../lib/views";
 import { MemoryMessageView } from "../lib/views/memory/memory-message-view";
@@ -13,12 +14,17 @@ jest.mock("../lib/views/memory/memory-message-view");
 jest.mock("../lib/views/memory/memory-peer-view");
 
 describe("protocol.http", () => {
-  const registry = allocateRegistry(DatabaseType.Memory);
-  const http = new HttpProtocol({
+  const commonConfig = {
     // note: we always mock pino, so this is a mock, not real
     logger: pino(),
     // per fastify docs, a port of zero will self-assign
     port: 0,
+  };
+  const registry = allocateRegistry({...commonConfig,
+    database: DatabaseType.Memory,
+    protocols: [ SupportedProtocol.Http ],
+  });
+  const http = new HttpProtocol({...commonConfig,
     // the memory database adapter is mocked, so this is a mock
     views: registry,
   });

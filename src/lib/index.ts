@@ -10,10 +10,14 @@ export interface IBootstrapConfig {
   port: number;
   protocols: SupportedProtocol[];
   database: DatabaseType;
+  dbuser?: string;
+  dbpass?: string;
+  dbhost?: string;
+  dbtable?: string;
 }
 
 export const bootstrap = async (opts: IBootstrapConfig) => {
-  const views = allocateRegistry(opts.database);
+  const views = allocateRegistry(opts);
   await opts.protocols.map((protocol) => {
     switch (protocol) {
       case SupportedProtocol.Http:

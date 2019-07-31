@@ -13,7 +13,7 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "**/src/**/*.ts"
+      "src/**/*.ts"
     ],
     "coverageReporters": [
       "cobertura"
@@ -25,6 +25,7 @@
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/jest": "^24.0.13",
+    "@types/mssql": "^4.0.16",
     "@types/pino": "^5.8.7",
     "@types/superagent": "^4.1.1",
     "@types/uuid": "^3.4.4",
@@ -38,6 +39,8 @@
   "dependencies": {
     "dotenv": "^8.0.0",
     "fastify": "^2.4.1",
+    "knex": "^0.19.1",
+    "mssql": "^5.1.0",
     "pino": "^5.12.3",
     "pkg": "^4.4.0",
     "uuid": "^3.3.2",
