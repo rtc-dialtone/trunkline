@@ -4,6 +4,7 @@ import { IViewRegistry } from "../views";
 export enum SupportedProtocol {
   Http = "http",
   RawSocket = "raw-socket",
+  Websocket = "ws",
 }
 
 export interface IBaseProtocolOpts {

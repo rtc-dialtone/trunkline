@@ -22,7 +22,7 @@ const argv = yargs
   .alias("P", "port")
   .default("port", 3000)
   .array("protocols")
-  .default("protocols", ["http"] as SupportedProtocol[])
+  .default("protocols", ["http", "ws", "raw-socket"] as SupportedProtocol[])
   .string("database")
   .choices("database", ["memory", "sql"])
   .default("database", "memory" as DatabaseType)

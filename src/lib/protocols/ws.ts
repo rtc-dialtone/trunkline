@@ -1,6 +1,6 @@
 import { BaseProtocol } from ".";
 
-export class RawSocket extends BaseProtocol {
+export class Ws extends BaseProtocol {
   public setup(): Promise<void> {
     throw new Error("Method not implemented.");
   }
