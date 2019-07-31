@@ -126,6 +126,12 @@ paths:
           required: true
           schema:
             $ref: "#/definitions/IMutableMessage"
+        - in: "header"
+          name: "x-peer-id"
+          type: "string"
+          format: "uuid"
+          description: "The id of the message sender"
+          required: true
       responses:
         200:
           description: "Ok"

@@ -66,7 +66,7 @@ The protocol-specific API surfaces that trunkline supports.
 ### Http
 
 + OpenAPI Visualized: [Redoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/rtc-dialtone/trunkline/master/src/lib/protocols/http-swagger.yml&nocors)
-+ OpenAPI Raw: [http-swagger.yml](./lib/protocols/http-swagger.yml)
++ OpenAPI Raw: [http-swagger.yml](./src/lib/protocols/http-swagger.yml)
 
 ## License
 
