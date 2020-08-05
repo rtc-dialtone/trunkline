@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "dotenv": "^8.0.0",
-    "fastify": "^2.4.1",
+    "fastify": "^2.15.1",
     "pino": "^5.12.3",
     "pkg": "^4.4.0",
     "uuid": "^3.3.2",
